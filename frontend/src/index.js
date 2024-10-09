@@ -29,7 +29,7 @@ ReactDOM.render(
   <BrowserRouter>
     <ChatProvider>
       <ChakraProvider>
-        <App />
+        <App/>
       </ChakraProvider>
     </ChatProvider>
   </BrowserRouter>,
