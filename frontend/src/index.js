@@ -23,6 +23,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import App from "./App";
 import ChatProvider from "./Context/ChatProvider";
+import "./index.css";
 
 ReactDOM.render(
   <BrowserRouter>

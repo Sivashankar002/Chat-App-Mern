@@ -1,5 +1,5 @@
 const express = require("express");
-const { chats } = require("./data/data");
+//const { chats } = require("./data/data");
 const connectDB = require("./config/db");
 const colors = require("colors");
 const userRoutes = require('./routes/userRoutes');
@@ -14,9 +14,9 @@ connectDB();
 const app = express();
 
 app.use(express.json());// to accept JSON DATA
-app.get('/', (req, res) => {
-    res.send('Api is running successfully');
-})
+// app.get('/', (req, res) => {
+//     res.send('Api is running successfully');
+// })
 
 app.use('/api/user', userRoutes);
 app.use('/api/chat', chatRoutes);

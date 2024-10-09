@@ -16,6 +16,10 @@ import axios from "axios";
 
 const Signup = () => {
   const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
+  const toast = useToast();
+  const history = useHistory();
+
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [confirmpassword, setConfirmpassword] = useState();
@@ -23,9 +27,8 @@ const Signup = () => {
   const [pic, setPic] = useState();
   const [loading, setLoading] = useState(false);
 
-  const toast = useToast();
-  const history = useHistory();
-  const handleClick = () => setShow(!show);
+  
+  
 
   const postDetails = (pics) => {
     setLoading(true);
@@ -37,7 +40,7 @@ const Signup = () => {
         isClosable: true,
         position: "bottom",
       });
-      setLoading(false);
+      //setLoading(false);
       return;
     }
     console.log(pics);
@@ -69,7 +72,7 @@ const Signup = () => {
         position: "bottom",
       });
       setLoading(false);
-      //return;
+      return;
     }
   };
 

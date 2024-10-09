@@ -7,6 +7,7 @@ import ProfileModal from './miscellaneous/ProfileModal';
 import UpdateGroupChatModal from './miscellaneous/UpdateGroupChatModal';
 import axios from 'axios';
 import './styles.css';
+
 import io from "socket.io-client";
 import ScrollableChat from "./ScrollableChat";
 import Lottie from "react-lottie";

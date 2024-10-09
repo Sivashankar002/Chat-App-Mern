@@ -30,7 +30,7 @@ const SideDrawer = ()=> {
     
     const handleSearch = async () => {
       if (!search) {
-        console.log("emptyuser");
+        //console.log("emptyuser");
         toast({
           title: "Please enter something in search", status: "warning",
           duration: 5000,
@@ -41,8 +41,8 @@ const SideDrawer = ()=> {
       }
       try {
         setLoading(true);
-        console.log("founduser");
-        console.log("User Token:", user.token);
+        // console.log("founduser");
+        // console.log("User Token:", user.token);
 
         const config = {
           headers: {
@@ -54,15 +54,15 @@ const SideDrawer = ()=> {
         //   `http://localhost:5000/api/user?search=${search}`,
         //   config
         // );
-
-        setSearchResult(data);
         setLoading(false);
+        setSearchResult(data);
+        
 
       } catch (error) {
-        console.error(
-          "Search error:",
-          error.response ? error.response.data : error.message
-        );
+        // console.error(
+        //   "Search error:",
+        //   error.response ? error.response.data : error.message
+        // );
         toast({
           title: "Error Occured!",
           description:"Failed to Load the Search Results",
@@ -71,10 +71,11 @@ const SideDrawer = ()=> {
           isClosable: true,
           position: "bottom-left",
         });
-        setLoading(false);
+       // setLoading(false);
       }
     };
-  const accessChat = async(userId) => {
+  const accessChat = async (userId) => {
+      console.log(userId);
       try {
         setLoadingChat(true);
 
@@ -168,7 +169,7 @@ const SideDrawer = ()=> {
                 </MenuButton>
                 <MenuList>
                   <ProfileModal user={user}>
-                    {/*<MenuItem>My Profile</MenuItem>*/}
+                    <MenuItem>My Profile</MenuItem>{" "}
                   </ProfileModal>
 
                   <MenuDivider />

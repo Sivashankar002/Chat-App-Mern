@@ -1,6 +1,11 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 const generateToken = require("../config/generateToken");
+
+//@description     Register new user
+//@route           POST /api/user/
+//@access          Public
+
 const registerUser = asyncHandler(async (req,res) => {
     const { name, email, password, pic } = req.body;
     if (!name || !email || !password) {
@@ -23,11 +28,12 @@ const registerUser = asyncHandler(async (req,res) => {
   
     if (user) {
         res.status(201).json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            pic: user.pic,
-            token: generateToken(user._id),
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          isAdmin: user.isAdmin,
+          pic: user.pic,
+          token: generateToken(user._id),
         });
 
     } else {
@@ -35,6 +41,10 @@ const registerUser = asyncHandler(async (req,res) => {
         throw new Error("Failed to Create the User");
     }
 });
+
+//@description     Auth the user
+//@route           POST /api/users/login
+//@access          Public
 
 const authUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
@@ -46,6 +56,7 @@ const authUser = asyncHandler(async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
+        isAdmin: user.isAdmin,
         pic: user.pic,
         token: generateToken(user._id),
       });
@@ -55,6 +66,10 @@ const authUser = asyncHandler(async (req, res) => {
 })
 
 // /api/user?search=siva
+//@description     Get or Search all users
+//@route           GET /api/user?search=
+//@access          Public
+
 const allUsers = asyncHandler(async(req, res) => {
     const keyword = req.query.search ? {
         $or: [
